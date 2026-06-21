@@ -1,0 +1,256 @@
+
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'GeistMono';
+    src: url('Assets/Fonts/GeistMono-Regular.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 10px;
+    min-height: 100vh; 
+    font-family: 'GeistMono', Arial, sans-serif;
+    color: white;
+    background-color: white;
+}
+
+
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%; 
+    mix-blend-mode: difference;
+}
+
+
+a {
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
+    transition: background-color 0.4s ease-in-out;
+
+}
+
+a:hover{
+    background-color: white;
+    transition: 0.4s;
+
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    width: 98%;
+    left: 1%;
+    bottom: 5px;
+    position: absolute;
+    flex: 1; 
+    mix-blend-mode: difference;
+
+}
+
+.datas1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.datas2 {
+    display: flex;
+    flex-direction: column;
+}
+
+#content1 {
+    margin-top: 5%;
+}
+
+
+
+.content2 {
+    margin-top: 0%;
+}
+
+.line {
+    width: 100%;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 0px;
+
+}
+
+
+p {
+    margin: 0;
+}
+
+.censored{
+    display: flex;
+    flex-direction: row;
+    margin-right: 20%;
+    background-color: transparent;
+    transition: background-color 0.4s ease-in-out;
+
+}
+
+#censura1 {
+    border-style: solid;
+    width: 50px;
+    height: 16px;
+    background-color: black;
+}
+
+#box1, #box2, #box3,#box4, #box5 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 0;
+
+}
+
+#button{
+    height: fit-content;
+    /*margin: auto 0;*/
+    background-color: transparent;
+    transition: background-color 0.4s ease-in-out;
+}
+
+
+
+#button:hover {
+    background-color: white;
+    transition: 0.4s;
+}
+
+
+
+.row-censored {
+    height: fit-content;
+    
+    /* Creiamo uno sfondo puramente nero */
+    background: linear-gradient(to right, white, white);
+    
+    /* Lo posizioniamo a sinistra e gli impediamo di ripetersi all'infinito */
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    
+    /* Impostiamo la larghezza iniziale allo 0% (quindi invisibile) */
+    background-size: 0% 100%;
+    
+    /* Animiamo specificamente la dimensione dello sfondo */
+    transition: background-size 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+#box1:hover .row-censored {
+    background-size: 5% 100%;
+}
+#box2:hover .row-censored {
+    background-size: 13% 100%;
+}
+#box3:hover .row-censored {
+    background-size: 14% 100%;
+}
+#box4:hover .row-censored {
+    background-size: 27% 100%;
+}
+#box5:hover .row-censored {
+    background-size: 81% 100%;
+}
+
+.row-censored::after {
+    display: inline-block; /* Fondamentale: permette di assegnare una larghezza (width) */
+    width: 5ch; /* 'ch' sta per character. Occuperà sempre lo spazio di 5 caratteri esatti */
+    text-align: left; /* Mantiene i numeri allineati a sinistra rispetto allo spazio riservato */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* 2. Assegniamo a ogni box il suo testo in modo permanente (così lo spazio è già calcolato) */
+#box1 .row-censored::after { content: " 6%"; }
+#box2 .row-censored::after { content: " 17%"; }
+#box3 .row-censored::after { content: " 18%"; }
+#box4 .row-censored::after { content: " 33%"; }
+#box5 .row-censored::after { content: " 100%"; }
+
+/* 3. All'hover sul box, rendiamo il testo visibile */
+#box1:hover .row-censored::after,
+#box2:hover .row-censored::after,
+#box3:hover .row-censored::after,
+#box4:hover .row-censored::after,
+#box5:hover .row-censored::after {
+    opacity: 1;
+}
+
+#text-about{
+    color: black;
+    margin-top: 25%;
+    width: 60%;
+    margin-left: 38.7%;
+}
+
+
+
+#black{
+    background-color: white;
+}
+
+#videoSfondoIndex {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Adatta il video a tutto schermo senza deformarlo */
+    z-index: -1; /* Fondamentale: spinge il video dietro a tutto il resto */
+    opacity: 0; /* Invisibile di default */
+    transition: opacity 0.5s ease-in-out; /* Dissolvenza morbida */
+    pointer-events: none; /* Impedisce al video di bloccare i click sui link */
+}
+
+/* Questa classe verrà aggiunta tramite JavaScript al click */
+#videoSfondoIndex.visibile {
+    opacity: 1; 
+}
+
+/* --- TESTO DI DEFAULT (DESKTOP) --- */
+#btnFullSound::after {
+    content: "[FULL SOUND EXPERIENCE]";
+}
+
+/* --- TESTO QUANDO ATTIVO (In riproduzione) --- */
+#btnFullSound.playing::after {
+    content: "[PAUSE]";
+}
+
+@media screen and (max-width: 768px) {
+    body{
+        font-size: 14px;
+    }
+
+    .censored{
+        display: none;
+    }
+    .line{
+        border-width: 0.9px;
+    }
+    #btnFullSound::after {
+        content: "[FULL AUDIO]"; 
+    }
+
+    #text-about{
+        position: absolute;
+        width: 94%;
+        margin-left: 0%;
+        bottom: 10px;
+    }
+    
+
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Omissis-Home</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="navbar">
+            <a href="index.html">[OMISSIS]</a>
+            <a href="#" id="btnFullSound"></a>
+            <a href="about.html">[ABOUT]</a>
+    </div>
+    
+    <video id="videoSfondoIndex" src="Assets/Images/Audio definitivo_compresso.mp4" loop muted playsinline></video>
+    <audio id="audioSfondoIndex" src="Assets/Audio/Audio definitivo.mp3" loop></audio>
+
+    <div id="main">
+
+
+        <div class="content2">
+            
+            <div class="line"></div>
+            <div id="box1">
+                
+                    <div class="datas1">
+                        <p>File: </p>
+                        <p>Date: </p>
+                        <p>Content: </p>
+                    </div>
+                    <div class="datas2">
+                        <p>EFTA00029103</p>
+                        <p>15.3.2021</p>
+                        <p>Legal act</p>
+                    
+                </div>
+
+                <div class="censored">
+                    <p class="row-censored">Censored content in percentage: </p>
+                </div>
+                
+
+                <div id="button">
+                    <a href="file1.html"><p>[OPEN]</p></a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="content2">
+            
+            <div class="line"></div>
+            <div id="box2">
+                
+                    <div class="datas1">
+                        <p>File: </p>
+                        <p>Date:</p>
+                        <p>Content: </p>
+                    </div>
+                    <div class="datas2">
+                        <p>EFTA02858445</p>
+                        <p>10.1.2020</p>
+                        <p>Testimony</p>
+                    
+                </div>
+
+                <div class="censored">
+                    <p class="row-censored">Censored content in percentage: </p>
+
+                </div>
+
+                <div id="button">
+                    <a href="file2.html"><p>[OPEN]</p></a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="content2">
+            
+            <div class="line"></div>
+            <div id="box3">
+                
+                    <div class="datas1">
+                        <p>File: </p>
+                        <p>Date:</p>
+                        <p>Content: </p>
+                    </div>
+                    <div class="datas2">
+                        <p>EFTA02857810</p>
+                        <p>23.4.2007</p>
+                        <p>Testimony</p>
+                    
+                </div>
+
+                <div class="censored">
+                    <p class="row-censored">Censored content in percentage: </p>
+
+                </div>
+
+                <div id="button">
+                    <a href="file3.html"><p>[OPEN]</p></a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="content2">
+            
+            <div class="line"></div>
+            <div id="box4">
+                
+                    <div class="datas1">
+                        <p>File: </p>
+                        <p>Date: </p>
+                        <p>Content: </p>
+                    </div>
+                    <div class="datas2">
+                        <p>EFTA02858481</p>
+                        <p>22.8.2019</p>
+                        <p>Testimony</p>
+                    
+                </div>
+
+                <div class="censored">
+                    <p class="row-censored">Censored content in percentage: </p>
+
+                </div>
+
+                <div id="button">
+                    <a href="file4.html"><p>[OPEN]</p></a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="content2">
+            
+            <div class="line"></div>
+            <div id="box5">
+                
+                    <div class="datas1">
+                        <p>File: </p>
+                        <p>Date: </p>
+                        <p>Content: </p>
+                    </div>
+                    <div class="datas2">
+                        <p>EFTA00039220</p>
+                        <p id="black">Censored</p>
+                        <p id="black">Censored</p>
+                    
+                </div>
+
+                <div class="censored">
+                    <p class="row-censored">Censored content in percentage: </p>
+
+                </div>
+
+                <div id="button">
+                    <a href="file5.html"><p>[OPEN]</p></a>
+                </div>
+            </div>
+            
+            
+        </div>  
+
+        <script>
+            const btnFullSound = document.getElementById("btnFullSound");
+            const videoSfondo = document.getElementById("videoSfondoIndex");
+            const audioSfondo = document.getElementById("audioSfondoIndex"); 
+
+            btnFullSound.addEventListener("click", function(event) {
+                event.preventDefault(); 
+
+                if (videoSfondo.classList.contains("visibile")) {
+                    // Ferma tutto
+                    videoSfondo.classList.remove("visibile");
+                    videoSfondo.pause();
+                    audioSfondo.pause();
+                    
+                    // Rimuove la classe: il CSS rimetterà il testo originale (lungo o corto in base allo schermo)
+                    btnFullSound.classList.remove("playing");
+                } else {
+                    // Fa partire tutto
+                    videoSfondo.classList.add("visibile");
+                    audioSfondo.currentTime = videoSfondo.currentTime; 
+                    videoSfondo.play();
+                    audioSfondo.play();
+                    
+                    // Aggiunge la classe: il CSS mostrerà [PAUSE]
+                    btnFullSound.classList.add("playing");
+                }
+            });
+
+            videoSfondo.addEventListener('waiting', function() {
+                audioSfondo.pause();
+            });
+
+            videoSfondo.addEventListener('playing', function() {
+                audioSfondo.currentTime = videoSfondo.currentTime; 
+                audioSfondo.play();
+            });
+        </script>
+    </body>
+    </html>

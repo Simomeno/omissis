@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'GeistMono';
+    src: url('Assets/Fonts/GeistMono-Regular.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+.bottone-audio {
+    background-color: transparent; 
+    color: black; 
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'GeistMono';
+  }
+  
+  .center{
+    position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  }
+  
+  .bottone-audio:hover {
+    background-color: black;
+  }
+
+  .mio-player{
+    margin: auto;
+  }
+
+
+
+  #videoSfondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Adatta il video mantenendo le proporzioni */
+    z-index: -1; /* Lo posiziona dietro a navbar e player */
+    opacity: 0; /* Lo rende invisibile di default */
+    transition: opacity 0.5s ease; /* Effetto di dissolvenza morbido */
+    pointer-events: none; /* Evita che il video intercetti i click */
+}
+
+@media screen and (max-width: 768px) {
+ .bottone-audio{
+  font-size: 14px;
+ }
+  
+}
+
