@@ -35,7 +35,16 @@ body {
     mix-blend-mode: difference;
     z-index: 100; /* Opzionale ma consigliato per tenerla sempre in primo piano */
 }
-
+.navbar2{
+    display: flex;
+    position: fixed;
+    bottom: 10px; /* Stessa misura del padding del body */
+    left: 10px; /* Stessa misura del padding del body */
+    width: calc(100% - 20px); /* 100% meno i due padding laterali */
+    justify-content: space-between;
+    mix-blend-mode: difference;
+    z-index: 100; /* Opzionale ma consigliato per tenerla sempre in primo piano */
+}
 
 a {
     text-decoration: none;
