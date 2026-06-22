@@ -25,12 +25,15 @@ body {
 
 
 
-.navbar{
+.navbar {
     display: flex;
-    justify-content: space-between;
-    width: 100%; 
-    mix-blend-mode: difference;
     position: fixed;
+    top: 10px; /* Stessa misura del padding del body */
+    left: 10px; /* Stessa misura del padding del body */
+    width: calc(100% - 20px); /* 100% meno i due padding laterali */
+    justify-content: space-between;
+    mix-blend-mode: difference;
+    z-index: 100; /* Opzionale ma consigliato per tenerla sempre in primo piano */
 }
 
 
