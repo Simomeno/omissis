@@ -6,15 +6,14 @@
     <title>Omissis-Home</title>
     <link rel="stylesheet" href="index.css">
 </head>
-<body>
+<body class="home-fixed">
     <div class="navbar">
             <a href="index.html">[OMISSIS]</a>
             <a href="#" id="btnFullSound"></a>
             <a href="about.html">[ABOUT]</a>
     </div>
     
-    <video id="videoSfondoIndex" src="Assets/Images/Audio definitivo_compresso.mp4" loop muted playsinline></video>
-    <audio id="audioSfondoIndex" src="Assets/Audio/Audio definitivo.mp3" loop></audio>
+    <video id="videoSfondoIndex" src="Assets/Images/Audio definitivo_compresso.mp4" loop playsinline></video>
 
     <div id="main">
 
@@ -168,38 +167,25 @@
         <script>
             const btnFullSound = document.getElementById("btnFullSound");
             const videoSfondo = document.getElementById("videoSfondoIndex");
-            const audioSfondo = document.getElementById("audioSfondoIndex"); 
-
+        
             btnFullSound.addEventListener("click", function(event) {
                 event.preventDefault(); 
-
+        
                 if (videoSfondo.classList.contains("visibile")) {
-                    // Ferma tutto
+                    // Se è già visibile, metti in pausa il video (che fermerà anche l'audio integrato)
                     videoSfondo.classList.remove("visibile");
                     videoSfondo.pause();
-                    audioSfondo.pause();
                     
-                    // Rimuove la classe: il CSS rimetterà il testo originale (lungo o corto in base allo schermo)
+                    // Ripristina il testo del pulsante dal CSS
                     btnFullSound.classList.remove("playing");
                 } else {
-                    // Fa partire tutto
+                    // Mostra il video e fallo partire con il suo audio nativo
                     videoSfondo.classList.add("visibile");
-                    audioSfondo.currentTime = videoSfondo.currentTime; 
                     videoSfondo.play();
-                    audioSfondo.play();
                     
-                    // Aggiunge la classe: il CSS mostrerà [PAUSE]
+                    // Cambia il testo del pulsante in [PAUSE] tramite CSS
                     btnFullSound.classList.add("playing");
                 }
-            });
-
-            videoSfondo.addEventListener('waiting', function() {
-                audioSfondo.pause();
-            });
-
-            videoSfondo.addEventListener('playing', function() {
-                audioSfondo.currentTime = videoSfondo.currentTime; 
-                audioSfondo.play();
             });
         </script>
     </body>
