@@ -49,6 +49,10 @@
  .bottone-audio{
   font-size: 15px;
  }
+
+ .bottone-audio:hover {
+  background-color: transparent;
+}
   
 }
 
